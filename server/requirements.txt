@@ -1,8 +1,7 @@
-fastapi==0.129.0
-uvicorn[standard]==0.30.6
-sqlalchemy==2.0.48
-pydantic[email]==2.10.3
-psycopg2-binary==2.9.10
-python-dotenv==1.0.1
-python-multipart==0.0.19
-aiofiles==25.1.0
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+databases  # if you use DB
+psycopg2-binary  # if PostgreSQL
+python-jose[cryptography]  # for JWT auth

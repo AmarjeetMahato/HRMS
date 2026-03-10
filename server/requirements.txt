@@ -1,6 +1,7 @@
 fastapi
 uvicorn[standard]
 python-dotenv
+pydantic[email]
 pydantic
 databases  # if you use DB
 psycopg2-binary  # if PostgreSQL

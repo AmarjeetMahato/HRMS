@@ -1,0 +1,26 @@
+# Environment Secrets (CRITICAL)
+.env
+.flaskenv
+*.env
+
+# Python Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python Cache (Compiled files)
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Distribution / Build
+dist/
+build/
+*.egg-info/
+
+# Databases (If using local SQLite)
+*.sqlite3
+*.db

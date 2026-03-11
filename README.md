@@ -43,32 +43,23 @@ This project demonstrates a **production-style architecture** using:
 # 📂 Project Structure
 
 ```
-HRMS
-│
-├── server
-│   ├── app
-│   │   ├── routes
-│   │   │   ├── employee_routes.py
-│   │   │   └── attendance_routes.py
-│   │   │
-│   │   ├── models
-│   │   ├── schemas
-│   │   ├── services
-│   │   └── database
-│   │
-│   └── main.py
-│
-└── client
-    ├── src
-    │   ├── app
-    │   ├── components
-    │   ├── redux
-    │   │   ├── store.ts
-    │   │   └── api
-    │   │
-    │   └── pages
-    │
-    └── package.json
+HRMS/
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── domain/
+│   │   │   ├── Employee/
+│   │   │   └── Attendance/
+│   │   ├── utils/
+│   │   └── main.py
+│   └── requirements.txt
+└── client/
+    ├── src/
+    │   ├── app/
+    │   ├── components/
+    │   └── redux/
+    │       ├── store.ts
+    │       └── api/
 ```
 
 ---

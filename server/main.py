@@ -11,6 +11,7 @@ app = FastAPI();
 origins = [
       "http://localhost:3000",  # React default port
     "http://127.0.0.1:3000",  # sometimes 127.0.0.1 is used
+     "https://hrms-gamma-three.vercel.app"
 ]
 
 app.add_middleware(
@@ -27,4 +28,4 @@ app.include_router(Attendance_routes,prefix="/api/v1/attendance",tags=["Attenden
 
 @app.get("/")
 def root_app()->dict:
-    return {message:"Hello World"}
+    return {"message":"Hello World"}

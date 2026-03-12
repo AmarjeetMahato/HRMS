@@ -99,7 +99,7 @@ const handleAddEmployee = async () => {
     setForm(EMPTY_FORM);
     setErrors({});
   } catch (e: any) {
-    const errMsg = e.data?.message || e.error || "Could not add employee";
+    const errMsg = e.data?.details || e.error || "Could not add employee";
     toast.error(errMsg);
   }
 };

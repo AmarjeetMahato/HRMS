@@ -46,7 +46,9 @@ export default function EmployeesPage() {
   console.log("employees", employees);
   
 
-const {data,isLoading ,refetch} = useGetEmployeesQuery({limit,page})
+const { data, isLoading, refetch } = useGetEmployeesQuery({ limit, page }, {
+  refetchOnMountOrArgChange: true,
+});
 // Update local state whenever data changes
   useEffect(() => {
     if (data?.data) {

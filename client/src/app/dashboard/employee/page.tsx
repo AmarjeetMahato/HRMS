@@ -17,6 +17,7 @@ import {
 import { DEPARTMENTS, avatarColor } from '@/app/lib/utils'
 import { Employee, EmployeeCreate } from '@/@validation/EmployeeValidation'
 import { useCreateEmployeeMutation, useDeleteEmployeeMutation, useGetEmployeesQuery } from '@/redux/rest-api/employeeAPI'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
 /**
  * Component Constants & Types
@@ -93,14 +94,11 @@ const handleAddEmployee = async () => {
   if (!validate()) return;
   try {
     const response = await createEmployee(form).unwrap();
-    // No need to manually update local 'employees' state! 
-    // RTK Query refetches the list automatically because of the tag.
     toast.success(`${response.data?.full_name ?? 'Employee'} added successfully!`);
     setAddOpen(false);
     setForm(EMPTY_FORM);
     setErrors({});
   } catch (e: any) {
-    // RTK Query errors are usually in e.data or e.error
     const errMsg = e.data?.message || e.error || "Could not add employee";
     toast.error(errMsg);
   }
@@ -114,16 +112,13 @@ const [deleteEmployee, { isLoading: deleting }] = useDeleteEmployeeMutation()
     toast.success(`${emp_name} removed`)
     setDeleteTarget(null)
   } catch (err: unknown) {
-      const errorMessage =
-      typeof err === "object" &&
-      err !== null &&
-      "data" in err &&
-      typeof (err as any).data?.detail === "string"
-        ? (err as any).data.detail
-        : "Failed to delete employee"
-
-    toast.error(errorMessage)
-  }
+    if (typeof err === 'object' && err !== null && 'status' in err) {
+      const e = err as FetchBaseQueryError
+      toast.error((e.data as any)?.detail || e.data || 'Could not delete employee')
+    } else {
+      toast.error((err as Error).message || 'Could not delete employee')
+    }
+    }
 }
 
   const handleInputChange = (field: keyof EmployeeCreate) => (

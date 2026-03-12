@@ -34,10 +34,13 @@ def create_employee(emp_data:EmployeeCreate, db:Session=Depends(get_db)):
             "status": "success", 
             "message": "Employee created successfully", 
             "data": jsonable_encoder(result)}
+    except HTTPException as e:
+        # Let FastAPI handle it with its proper status code
+        raise e     
     except Exception as e:
         raise HTTPException(
              status_code=500,
-             detail=f"An unexpected error occurred: {str(e)}"
+             detail=f" {str(e)}"
         )
 
 @router.get("/{emp_id}")
@@ -84,5 +87,5 @@ def delete_employee(emp_id: str, db: Session = Depends(get_db)):
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Unexpected error: {str(e)}"
+            detail=f"{str(e)}"
         )

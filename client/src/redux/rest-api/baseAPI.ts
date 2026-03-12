@@ -3,6 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Available at your primary URL https://hrms-xj6h.onrender.com
 const baseURL = "https://hrms-xj6h.onrender.com/api/v1";
 
+// const baseURL= "http://127.0.0.1:8000/api/v1"
+
 // Base API
 export const baseAPI = createApi({
   reducerPath: "api",
